@@ -69,7 +69,7 @@
         <h2 class="mb-3">정보입력</h2>
         <form action="/create" method="post" class="d-flex flex-column">
           <input type="text" name="name" placeholder="이름 입력" required class="rounded-2 btn btn-outline-primary text-dark my-3 mx-auto" />
-          <input type="number" name="age" placeholder="나이 입력" required class="rounded-2 btn btn-outline-primary text-dark my-3 mx-auto"/>
+          <input type="number" name="age" placeholder="나이 입력" required class="rounded-2 btn btn-outline-primary text-dark my-3 mx-auto" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
           <input type="radio" name="sex" value="남자" class="m-2 p-2 man" checked/>남자
           <input type="radio" name="sex" value="여자" />여자
           <input type="number" name="contact" placeholder="연락처" class="rounded-2 btn btn-outline-primary text-dark my-3 mx-auto"/>
