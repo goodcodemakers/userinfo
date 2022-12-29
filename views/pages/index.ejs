@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고객정보관리</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container m-auto mt-3">
+      <h1 class="mb-3">고객정보관리</h1>
+      <div class="search ">
+          <form action="/search" method="post" class="input-group">
+              <input type="text" name="search" placeholder="고객명으로 검색"  class="searchconsole"/>
+      
+                  <button type="submit" class="search-button btn btn-outline-dark">검색</button>
+            </form>
+        </div>
+      <p class="totalnum my-5 h4 mark ">Total Posts : <%= user.length%></p>
+        <table class="table p-2 m-3">
+          <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>age</td>
+            <td>sex</td>
+            <td>contact</td>
+          </tr>       
+          <% for( let i = 0; i <user.length; i++) { %>
+                <tr>
+                    <td><%= user[i].id %></td>
+                    <td><%= user[i].name %></td>
+                    <td><%= user[i].age %></td>
+                    <td><%= user[i].sex %></td>
+                    <td><%= user[i].contact %></td>
+                    <td>
+                        <form
+                        action="/delete/<%= user[i].id %>"
+                        class="delete"
+                        method="post"
+                        onsubmit="let result = confirm('삭제하시겠습니까?');if(!result) return false">
+                        <button type="submit" class="bg-danger text-white border-danger rounded-2 shadow p-2">삭제</button>
+                    </form>
+                    </td>
+                </tr>    
+                <% } %>
+        </table>
+      <div class="text-center ">
+        <h2 class="mb-3">정보입력</h2>
+        <form action="/create" method="post" class="d-flex flex-column">
+          <input type="text" name="name" placeholder="이름 입력" required class="rounded-2 btn btn-outline-primary text-white my-3 mx-auto" />
+          <input type="text" name="age" placeholder="나이 입력" required class="rounded-2 btn btn-outline-primary text-white my-3 mx-auto"/>
+          <input type="radio" name="sex" value="남자" class="m-2 p-2 man" checked/>남자
+          <input type="radio" name="sex" value="여자" />여자
+          <input type="text" name="contact" placeholder="연락처" class="rounded-2 btn btn-outline-primary text-white my-3 mx-auto"/>
+          <button type="submit" class="btn btn-outline-dark my-3 mx-auto">추가</button>
+        </form>
+      </div><!-- create -->
+    </div><!-- container -->
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>
