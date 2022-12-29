@@ -36,6 +36,7 @@ app.post("/delete/:id", async function (req, res) {
       id: req.params.id,
     },
   });
+  res.redirect("/");
 });
 app.post("/search", async function (req, res) {
   const wordSplit = req.body.search;
